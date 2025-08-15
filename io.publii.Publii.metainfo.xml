@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.publii.Publii</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <name>Publii</name>
+  <summary>The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites.</summary>
+  <description>
+    <p>
+      Creating a website doesn't have to be complicated or expensive. With the Publii app, the most intuitive CMS for static sites, you can create a beautiful, safe, and privacy-friendly website quickly and easily; perfect for anyone who wants a fast, secure website in a flash.
+    </p>
+    <p>
+      Unofficial, work in progress, rudimentary, experimental and probably unstable Flatpak build for Publii - in other words, use it if you know you can handle errors.
+    </p>
+  </description>
+  <launchable type="desktop-id">io.publii.Publii.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://getpublii.com/assets/images/publii-cms.webp</image>
+    </screenshot>
+    <screenshot>
+      <image>https://getpublii.com/assets/images/bg-themes.webp</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://getpublii.com</url>
+  <url type="bugtracker">https://github.com/GetPublii/Publii/issues</url>
+  <url type="help">https://getpublii.com/docs</url>
+  <developer_name>Publii Contributors</developer_name>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.46.5" date="2024-04-24"/>
+  </releases>
+</component>

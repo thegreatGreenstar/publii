@@ -1,0 +1,71 @@
+app-id: io.publii.Publii
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: publii
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --device=dri
+  - --share=network
+  - --filesystem=xdg-documents
+  - --socket=session-bus
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.freedesktop.FileManager1
+  - --talk-name=org.freedesktop.portal.Desktop
+  - --talk-name=org.freedesktop.portal.FileChooser
+  - --talk-name=org.freedesktop.secrets
+  - --env=ELECTRON_TRASH=gio
+  - --env=GTK_A11Y=none
+  - --env=NO_AT_BRIDGE=1
+
+modules:
+  - name: libsecret
+    buildsystem: meson
+    config-opts:
+      - -Dmanpage=false
+      - -Dvapi=false
+      - -Dgtk_doc=false
+    cleanup:
+      - /bin
+      - /include
+      - /lib/pkgconfig
+      - /share/gir-1.0
+      - /share/man
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/libsecret/0.21/libsecret-0.21.4.tar.xz
+        sha256: 163d08d783be6d4ab9a979ceb5a4fecbc1d9660d3c34168c581301cd53912b20
+
+  - name: publii
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 publii-wrapper.sh /app/bin/publii
+      - install -Dm644 Publii.png /app/share/icons/hicolor/256x256/apps/io.publii.Publii.png
+      - install -Dm644 io.publii.Publii.desktop /app/share/applications/io.publii.Publii.desktop
+      - install -Dm644 io.publii.Publii.metainfo.xml /app/share/metainfo/io.publii.Publii.metainfo.xml
+      - mkdir -p /app/share/publii
+      - cp Publii /app/share/publii/
+      - cp -r resources /app/share/publii/
+      - cp -r locales /app/share/publii/
+      - cp *.pak /app/share/publii/
+      - cp *.bin /app/share/publii/
+      - cp *.dat /app/share/publii/
+      - cp *.so* /app/share/publii/
+      - cp chrome_* /app/share/publii/
+      - cp vk_* /app/share/publii/
+      - cp LICENSE* /app/share/publii/
+      - mkdir -p /app/share/publii/usr/lib
+      - cp -r usr/lib/* /app/share/publii/usr/lib/
+      - mkdir -p /app/share/publii/usr/share
+      - cp -r usr/share/* /app/share/publii/usr/share/
+    sources:
+      - type: dir
+        path: squashfs-root
+      - type: file
+        path: io.publii.Publii.desktop
+      - type: file
+        path: io.publii.Publii.metainfo.xml
+      - type: file
+        path: publii-wrapper.sh

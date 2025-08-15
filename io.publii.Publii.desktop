@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Publii
+Exec=publii --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=io.publii.Publii
+StartupWMClass=Publii
+Comment=The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites.
+Categories=Development;WebDevelopment;
+Keywords=CMS;static;site;generator;blog;website;
+MimeType=application/x-publii-project;
